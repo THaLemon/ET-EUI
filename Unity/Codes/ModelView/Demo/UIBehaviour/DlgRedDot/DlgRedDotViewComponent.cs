@@ -24,7 +24,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Button EButton_rootButton
+		public UnityEngine.UI.Button E_rootButton
      	{
      		get
      		{
@@ -33,15 +33,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_rootButton == null )
+     			if( this.m_E_rootButton == null )
      			{
-		    		this.m_EButton_rootButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_root");
+		    		this.m_E_rootButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_root");
      			}
-     			return this.m_EButton_rootButton;
+     			return this.m_E_rootButton;
      		}
      	}
 
-		public UnityEngine.UI.Image EButton_rootImage
+		public UnityEngine.UI.Image E_rootImage
      	{
      		get
      		{
@@ -50,15 +50,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_rootImage == null )
+     			if( this.m_E_rootImage == null )
      			{
-		    		this.m_EButton_rootImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_root");
+		    		this.m_E_rootImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_root");
      			}
-     			return this.m_EButton_rootImage;
+     			return this.m_E_rootImage;
      		}
      	}
 
-		public UnityEngine.UI.Button EButton_BagButton
+		public UnityEngine.UI.Button E_BagButton
      	{
      		get
      		{
@@ -67,15 +67,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_BagButton == null )
+     			if( this.m_E_BagButton == null )
      			{
-		    		this.m_EButton_BagButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_Bag");
+		    		this.m_E_BagButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_Bag");
      			}
-     			return this.m_EButton_BagButton;
+     			return this.m_E_BagButton;
      		}
      	}
 
-		public UnityEngine.UI.Image EButton_BagImage
+		public UnityEngine.UI.Image E_BagImage
      	{
      		get
      		{
@@ -84,15 +84,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_BagImage == null )
+     			if( this.m_E_BagImage == null )
      			{
-		    		this.m_EButton_BagImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_Bag");
+		    		this.m_E_BagImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Bag");
      			}
-     			return this.m_EButton_BagImage;
+     			return this.m_E_BagImage;
      		}
      	}
 
-		public UnityEngine.UI.Button EButton_BagNode1Button
+		public UnityEngine.UI.Button E_BagNode1Button
      	{
      		get
      		{
@@ -101,15 +101,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_BagNode1Button == null )
+     			if( this.m_E_BagNode1Button == null )
      			{
-		    		this.m_EButton_BagNode1Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_BagNode1");
+		    		this.m_E_BagNode1Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_BagNode1");
      			}
-     			return this.m_EButton_BagNode1Button;
+     			return this.m_E_BagNode1Button;
      		}
      	}
 
-		public UnityEngine.UI.Image EButton_BagNode1Image
+		public UnityEngine.UI.Image E_BagNode1Image
      	{
      		get
      		{
@@ -118,15 +118,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_BagNode1Image == null )
+     			if( this.m_E_BagNode1Image == null )
      			{
-		    		this.m_EButton_BagNode1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_BagNode1");
+		    		this.m_E_BagNode1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BagNode1");
      			}
-     			return this.m_EButton_BagNode1Image;
+     			return this.m_E_BagNode1Image;
      		}
      	}
 
-		public UnityEngine.UI.Button EButton_BagNode2Button
+		public UnityEngine.UI.Button E_BagNode2Button
      	{
      		get
      		{
@@ -135,15 +135,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_BagNode2Button == null )
+     			if( this.m_E_BagNode2Button == null )
      			{
-		    		this.m_EButton_BagNode2Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_BagNode2");
+		    		this.m_E_BagNode2Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_BagNode2");
      			}
-     			return this.m_EButton_BagNode2Button;
+     			return this.m_E_BagNode2Button;
      		}
      	}
 
-		public UnityEngine.UI.Image EButton_BagNode2Image
+		public UnityEngine.UI.Image E_BagNode2Image
      	{
      		get
      		{
@@ -152,15 +152,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_BagNode2Image == null )
+     			if( this.m_E_BagNode2Image == null )
      			{
-		    		this.m_EButton_BagNode2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_BagNode2");
+		    		this.m_E_BagNode2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_BagNode2");
      			}
-     			return this.m_EButton_BagNode2Image;
+     			return this.m_E_BagNode2Image;
      		}
      	}
 
-		public UnityEngine.UI.Button EButton_MailButton
+		public UnityEngine.UI.Button E_MailButton
      	{
      		get
      		{
@@ -169,15 +169,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_MailButton == null )
+     			if( this.m_E_MailButton == null )
      			{
-		    		this.m_EButton_MailButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_Mail");
+		    		this.m_E_MailButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_Mail");
      			}
-     			return this.m_EButton_MailButton;
+     			return this.m_E_MailButton;
      		}
      	}
 
-		public UnityEngine.UI.Image EButton_MailImage
+		public UnityEngine.UI.Image E_MailImage
      	{
      		get
      		{
@@ -186,15 +186,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_MailImage == null )
+     			if( this.m_E_MailImage == null )
      			{
-		    		this.m_EButton_MailImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_Mail");
+		    		this.m_E_MailImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_Mail");
      			}
-     			return this.m_EButton_MailImage;
+     			return this.m_E_MailImage;
      		}
      	}
 
-		public UnityEngine.UI.Button EButton_MailNode1Button
+		public UnityEngine.UI.Button E_MailNode1Button
      	{
      		get
      		{
@@ -203,15 +203,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_MailNode1Button == null )
+     			if( this.m_E_MailNode1Button == null )
      			{
-		    		this.m_EButton_MailNode1Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_MailNode1");
+		    		this.m_E_MailNode1Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_MailNode1");
      			}
-     			return this.m_EButton_MailNode1Button;
+     			return this.m_E_MailNode1Button;
      		}
      	}
 
-		public UnityEngine.UI.Image EButton_MailNode1Image
+		public UnityEngine.UI.Image E_MailNode1Image
      	{
      		get
      		{
@@ -220,15 +220,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_MailNode1Image == null )
+     			if( this.m_E_MailNode1Image == null )
      			{
-		    		this.m_EButton_MailNode1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_MailNode1");
+		    		this.m_E_MailNode1Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_MailNode1");
      			}
-     			return this.m_EButton_MailNode1Image;
+     			return this.m_E_MailNode1Image;
      		}
      	}
 
-		public UnityEngine.UI.Button EButton_MailNode2Button
+		public UnityEngine.UI.Button E_MailNode2Button
      	{
      		get
      		{
@@ -237,15 +237,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_MailNode2Button == null )
+     			if( this.m_E_MailNode2Button == null )
      			{
-		    		this.m_EButton_MailNode2Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_MailNode2");
+		    		this.m_E_MailNode2Button = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_MailNode2");
      			}
-     			return this.m_EButton_MailNode2Button;
+     			return this.m_E_MailNode2Button;
      		}
      	}
 
-		public UnityEngine.UI.Image EButton_MailNode2Image
+		public UnityEngine.UI.Image E_MailNode2Image
      	{
      		get
      		{
@@ -254,49 +254,49 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_MailNode2Image == null )
+     			if( this.m_E_MailNode2Image == null )
      			{
-		    		this.m_EButton_MailNode2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_MailNode2");
+		    		this.m_E_MailNode2Image = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_MailNode2");
      			}
-     			return this.m_EButton_MailNode2Image;
+     			return this.m_E_MailNode2Image;
      		}
      	}
 
 		public void DestroyWidget()
 		{
 			this.m_EGBackGroundRectTransform = null;
-			this.m_EButton_rootButton = null;
-			this.m_EButton_rootImage = null;
-			this.m_EButton_BagButton = null;
-			this.m_EButton_BagImage = null;
-			this.m_EButton_BagNode1Button = null;
-			this.m_EButton_BagNode1Image = null;
-			this.m_EButton_BagNode2Button = null;
-			this.m_EButton_BagNode2Image = null;
-			this.m_EButton_MailButton = null;
-			this.m_EButton_MailImage = null;
-			this.m_EButton_MailNode1Button = null;
-			this.m_EButton_MailNode1Image = null;
-			this.m_EButton_MailNode2Button = null;
-			this.m_EButton_MailNode2Image = null;
+			this.m_E_rootButton = null;
+			this.m_E_rootImage = null;
+			this.m_E_BagButton = null;
+			this.m_E_BagImage = null;
+			this.m_E_BagNode1Button = null;
+			this.m_E_BagNode1Image = null;
+			this.m_E_BagNode2Button = null;
+			this.m_E_BagNode2Image = null;
+			this.m_E_MailButton = null;
+			this.m_E_MailImage = null;
+			this.m_E_MailNode1Button = null;
+			this.m_E_MailNode1Image = null;
+			this.m_E_MailNode2Button = null;
+			this.m_E_MailNode2Image = null;
 			this.uiTransform = null;
 		}
 
 		private UnityEngine.RectTransform m_EGBackGroundRectTransform = null;
-		private UnityEngine.UI.Button m_EButton_rootButton = null;
-		private UnityEngine.UI.Image m_EButton_rootImage = null;
-		private UnityEngine.UI.Button m_EButton_BagButton = null;
-		private UnityEngine.UI.Image m_EButton_BagImage = null;
-		private UnityEngine.UI.Button m_EButton_BagNode1Button = null;
-		private UnityEngine.UI.Image m_EButton_BagNode1Image = null;
-		private UnityEngine.UI.Button m_EButton_BagNode2Button = null;
-		private UnityEngine.UI.Image m_EButton_BagNode2Image = null;
-		private UnityEngine.UI.Button m_EButton_MailButton = null;
-		private UnityEngine.UI.Image m_EButton_MailImage = null;
-		private UnityEngine.UI.Button m_EButton_MailNode1Button = null;
-		private UnityEngine.UI.Image m_EButton_MailNode1Image = null;
-		private UnityEngine.UI.Button m_EButton_MailNode2Button = null;
-		private UnityEngine.UI.Image m_EButton_MailNode2Image = null;
+		private UnityEngine.UI.Button m_E_rootButton = null;
+		private UnityEngine.UI.Image m_E_rootImage = null;
+		private UnityEngine.UI.Button m_E_BagButton = null;
+		private UnityEngine.UI.Image m_E_BagImage = null;
+		private UnityEngine.UI.Button m_E_BagNode1Button = null;
+		private UnityEngine.UI.Image m_E_BagNode1Image = null;
+		private UnityEngine.UI.Button m_E_BagNode2Button = null;
+		private UnityEngine.UI.Image m_E_BagNode2Image = null;
+		private UnityEngine.UI.Button m_E_MailButton = null;
+		private UnityEngine.UI.Image m_E_MailImage = null;
+		private UnityEngine.UI.Button m_E_MailNode1Button = null;
+		private UnityEngine.UI.Image m_E_MailNode1Image = null;
+		private UnityEngine.UI.Button m_E_MailNode2Button = null;
+		private UnityEngine.UI.Image m_E_MailNode2Image = null;
 		public Transform uiTransform = null;
 	}
 }
