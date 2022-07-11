@@ -25,6 +25,8 @@ namespace ET
             Game.Scene.AddComponent<RobotCaseDispatcherComponent>();
             Game.Scene.AddComponent<RobotCaseComponent>();
             Game.Scene.AddComponent<NumericWatcherComponent>();
+
+            // Game.Scene.AddComponent<DBManagerComponent>();
             
             var processScenes = StartSceneConfigCategory.Instance.GetByProcess(Game.Options.Process);
             foreach (StartSceneConfig startConfig in processScenes)

@@ -176,9 +176,9 @@ namespace ET
               clickActionAsync().Coroutine();
           });
       }
-      
+
       public static void AddListenerAsync(this Button button, Func<ETTask> action)
-      { 
+      {
           button.onClick.RemoveAllListeners();
 
           async ETTask clickActionAsync()
@@ -187,10 +187,10 @@ namespace ET
               await action();
               UIEventComponent.Instance?.SetUIClicked(false);
           }
-               
+
           button.onClick.AddListener(() =>
           {
-              if ( UIEventComponent.Instance == null)
+              if (UIEventComponent.Instance == null)
               {
                   return;
               }
@@ -199,12 +199,12 @@ namespace ET
               {
                   return;
               }
-                   
+
               clickActionAsync().Coroutine();
           });
       }
 
-        public static void AddListener(this Toggle toggle, UnityAction<bool> selectEventHandler)
+      public static void AddListener(this Toggle toggle, UnityAction<bool> selectEventHandler)
         {
             toggle.onValueChanged.RemoveAllListeners();
             toggle.onValueChanged.AddListener(selectEventHandler);
