@@ -21,11 +21,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Tools\Analyzer\Analyzer.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+      <ProjectReference Include="..\..\Tools\Analyzer\Analyzer.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
       <ProjectReference Include="..\Model\Robot.Model.csproj" />
     </ItemGroup>
     
     <ItemGroup>
+        <Compile Include="..\..\Server\Hotfix\Demo\ServerInfo\ServerInfosComponentSystem.cs">
+          <Link>Demo\ServerInfo\ServerInfosComponentSystem.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Server\Hotfix\Demo\ServerInfo\ServerInfoSystem.cs">
+          <Link>Demo\ServerInfo\ServerInfoSystem.cs</Link>
+        </Compile>
         <Compile Include="..\..\Server\Hotfix\Demo\Session\InnerMessageDispatcherHelper.cs">
           <Link>Server\Session\InnerMessageDispatcherHelper.cs</Link>
         </Compile>
