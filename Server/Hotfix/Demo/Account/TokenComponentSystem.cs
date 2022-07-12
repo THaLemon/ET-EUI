@@ -27,8 +27,7 @@
         // 令牌过期检测
         public static async ETTask TimeOutRemoveKey(this TokenComponent self, long key, string token)
         {
-            // await TimerComponent.Instance.WaitAsync(600000);//10分钟后过期
-            await TimerComponent.Instance.WaitAsync(3600000);//1小时后过期
+            await TimerComponent.Instance.WaitAsync(600000);//10分钟后过期
             string onlinetoken = self.Get(key);
             if (!string.IsNullOrEmpty(onlinetoken) && onlinetoken.Equals(token))
             {

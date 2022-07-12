@@ -1,50 +1,37 @@
 using System;
 
-namespace ET
-{
+namespace ET {
     [Timer(TimerType.SessionIdleChecker)]
-    public class SessionIdleChecker: ATimer<SessionIdleCheckerComponent>
-    {
-        public override void Run(SessionIdleCheckerComponent self)
-        {
-            try
-            {
+    public class SessionIdleChecker : ATimer<SessionIdleCheckerComponent> {
+        public override void Run(SessionIdleCheckerComponent self) {
+            try {
                 self.Check();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Log.Error($"move timer error: {self.Id}\n{e}");
             }
         }
     }
-    
+
     [ObjectSystem]
-    public class SessionIdleCheckerComponentAwakeSystem: AwakeSystem<SessionIdleCheckerComponent, int>
-    {
-        public override void Awake(SessionIdleCheckerComponent self, int checkInteral)
-        {
+    public class SessionIdleCheckerComponentAwakeSystem : AwakeSystem<SessionIdleCheckerComponent, int> {
+        public override void Awake(SessionIdleCheckerComponent self, int checkInteral) {
             self.RepeatedTimer = TimerComponent.Instance.NewRepeatedTimer(checkInteral, TimerType.SessionIdleChecker, self);
         }
     }
 
     [ObjectSystem]
-    public class SessionIdleCheckerComponentDestroySystem: DestroySystem<SessionIdleCheckerComponent>
-    {
-        public override void Destroy(SessionIdleCheckerComponent self)
-        {
+    public class SessionIdleCheckerComponentDestroySystem : DestroySystem<SessionIdleCheckerComponent> {
+        public override void Destroy(SessionIdleCheckerComponent self) {
             TimerComponent.Instance?.Remove(ref self.RepeatedTimer);
         }
     }
 
-    public static class SessionIdleCheckerComponentSystem
-    {
-        public static void Check(this SessionIdleCheckerComponent self)
-        {
+    public static class SessionIdleCheckerComponentSystem {
+        public static void Check(this SessionIdleCheckerComponent self) {
             Session session = self.GetParent<Session>();
             long timeNow = TimeHelper.ClientNow();
 
-            if (timeNow - session.LastRecvTime < 30 * 1000 && timeNow - session.LastSendTime < 30 * 1000)
-            {
+            if (timeNow - session.LastRecvTime < 30 * 1000 && timeNow - session.LastSendTime < 30 * 1000) {
                 return;
             }
 

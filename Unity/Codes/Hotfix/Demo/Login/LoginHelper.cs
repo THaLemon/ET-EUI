@@ -46,6 +46,7 @@ namespace ET
             try
             {
                 accountSession = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(address));
+                password = MD5Helper.StringMD5(password);
                 a2C_LoginAccount = (A2C_LoginAccount)await accountSession.Call(new C2A_LoginAccount() { AccountName = account, Password = password });
             }
             catch (Exception e)
@@ -62,7 +63,10 @@ namespace ET
             }
 
             // 保存链接的Session
-            zoneScene.GetComponent<SessionComponent>().Session = accountSession;
+            zoneScene.AddComponent<SessionComponent>().Session = accountSession;
+            // 与服务端的SessionIdleCheckerComponent对应,维持心跳包
+            zoneScene.GetComponent<SessionComponent>().Session.AddComponent<PingComponent>();
+            
             zoneScene.GetComponent<AccountInfoComponent>().Token = a2C_LoginAccount.Token;
             zoneScene.GetComponent<AccountInfoComponent>().AccountId = a2C_LoginAccount.AccountId;
 

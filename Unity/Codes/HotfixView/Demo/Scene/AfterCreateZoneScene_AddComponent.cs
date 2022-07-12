@@ -8,9 +8,9 @@ namespace ET {
             zoneScene.AddComponent<RedDotComponent>();
             zoneScene.AddComponent<ResourcesLoaderComponent>();
 
-            //zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Login);
+            zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Login);
             // 打开测试界面
-            zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Test);
+            // zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Test);
         }
     }
 }
