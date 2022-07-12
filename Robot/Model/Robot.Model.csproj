@@ -34,12 +34,6 @@
         <Compile Include="..\..\Server\Model\Config\ConfigLoader.cs">
           <Link>Config\ConfigLoader.cs</Link>
         </Compile>
-        <Compile Include="..\..\Server\Model\Demo\ServerInfo\ServerInfo.cs">
-          <Link>Demo\ServerInfo\ServerInfo.cs</Link>
-        </Compile>
-        <Compile Include="..\..\Server\Model\Demo\ServerInfo\ServerInfosComponent.cs">
-          <Link>Demo\ServerInfo\ServerInfosComponent.cs</Link>
-        </Compile>
         <Compile Include="..\..\Unity\Codes\Model\Module\Config\**\*.cs">
             <Link>Module\Config\%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>
