@@ -91,10 +91,20 @@
         <Compile Include="..\..\Server\Hotfix\Config\**\*.cs">
             <Link>Config\%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>
+
+        <Compile Remove="Demo\RoleInfo\**" />
     </ItemGroup>
     
     <ItemGroup>
       <Folder Include="Server" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <EmbeddedResource Remove="Demo\RoleInfo\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove="Demo\RoleInfo\**" />
     </ItemGroup>
 
 </Project>

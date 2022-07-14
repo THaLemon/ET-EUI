@@ -19,8 +19,10 @@ namespace ET
         public const int ERR_AccountPasswordFormatError = 200005;   //密码格式错误
         public const int ERR_AccountPasswordError = 200006;         //密码错误
         public const int ERR_AccountInBlackListError = 200007;      //账户在黑名单中
-        public const int ERR_RequestRepeatly  = 200008;             //重复链接
+        public const int ERR_RequestRepeatly  = 200008;             //重复请求
         
         public const int ERR_TokenError  = 200009;                  //令牌错误
+        public const int ERR_RoleNameIsEmptyError  = 200010;        //角色名字错误
+        public const int ERR_RoleNameIsRepeatedError  = 200011;     //角色名字重复
     }
 }

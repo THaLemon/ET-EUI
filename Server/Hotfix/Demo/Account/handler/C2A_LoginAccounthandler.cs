@@ -18,7 +18,7 @@ namespace ET {
             // 一旦链接,锁定session的状态,防止重复跑流程
             if (session.GetComponent<SessionLockingComponent>() != null) {
                 response.Error = ErrorCode.ERR_RequestRepeatly;
-                response.Message = "重复链接";
+                response.Message = "重复请求";
                 reply();
                 session.Disconnect().Coroutine();
                 return;
