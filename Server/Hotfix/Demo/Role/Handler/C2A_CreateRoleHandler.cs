@@ -36,7 +36,7 @@ namespace ET
             // 角色名字错误
             if (string.IsNullOrEmpty(request.Name))
             {
-                response.Error = ErrorCode.ERR_RoleNameIsEmptyError;
+                response.Error = ErrorCode.ERR_RoleNameIsEmpty;
                 reply();
                 return;
             }
@@ -44,14 +44,14 @@ namespace ET
             // 上锁,防止重复处理
             using (session.AddComponent<SessionLockingComponent>())
             {
-                // 角色名字查重
-                using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.RoleNameLock, request.AccountId.GetHashCode()))
+                // 在数据库中操作角色
+                using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.CreateRoleLock, request.AccountId.GetHashCode()))
                 {
                     var roleInfos = await DBManagerComponent.Instance.GetZoneDB(session.DomainZone()).Query<RoleInfo>(
                         d => d.Name == request.Name && d.ServerId == request.ServerId);
                     if (roleInfos != null && roleInfos.Count >= 0)
                     {
-                        response.Error = ErrorCode.ERR_RoleNameIsRepeatedError;
+                        response.Error = ErrorCode.ERR_RoleNameIsRepeated;
                         reply();
                         return;
                     }

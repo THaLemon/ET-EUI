@@ -22,7 +22,8 @@ namespace ET
         public const int ERR_RequestRepeatly  = 200008;             //重复请求
         
         public const int ERR_TokenError  = 200009;                  //令牌错误
-        public const int ERR_RoleNameIsEmptyError  = 200010;        //角色名字错误
-        public const int ERR_RoleNameIsRepeatedError  = 200011;     //角色名字重复
+        public const int ERR_RoleNameIsEmpty  = 200010;        //角色名字错误
+        public const int ERR_RoleNameIsRepeated  = 200011;     //角色名字重复
+        public const int ERR_RoleIsNotExits  = 200012;         //角色不存在
     }
 }

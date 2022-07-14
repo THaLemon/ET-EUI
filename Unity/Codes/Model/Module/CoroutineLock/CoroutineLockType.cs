@@ -14,7 +14,7 @@ namespace ET
         public const int LoginAccount = 8;              // 登录注册流程的线程锁
         public const int LoginCenterLock = 9;              // 登录中心的线程锁
         public const int GateLoginLock = 10;              // 网关与登录中心的线程锁
-        public const int RoleNameLock = 11;              // 在数据库中查询角色名称
+        public const int CreateRoleLock = 11;              // 在数据库中查询角色
 
         public const int Max = 100; // 这个必须最大
     }

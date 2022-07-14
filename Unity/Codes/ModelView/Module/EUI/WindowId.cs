@@ -10,5 +10,7 @@
         WindowID_Helper,    //提示界面
 
         WindowID_Test,      //测试界面
+        WindowID_Server,    //服务器选择界面
+        WindowID_Role,      //角色创建界面
     }
 }
