@@ -495,13 +495,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8917297717840137483}
   m_TextComponent: {fileID: 5151564513010075490}
   m_Placeholder: {fileID: 5377255972544829166}
-  m_ContentType: 5
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 6
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 4
+  m_CharacterValidation: 0
   m_CharacterLimit: 14
   m_OnSubmit:
     m_PersistentCalls:
@@ -1172,7 +1172,7 @@ GameObject:
   - component: {fileID: 490087437379224821}
   - component: {fileID: 1534033980179600139}
   m_Layer: 5
-  m_Name: ELoop_Server
+  m_Name: ELoop_Role
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,6 +9,7 @@ namespace ET
 	[FriendClass(typeof (DlgRole))]
 	[FriendClass(typeof (RoleInfosComponent))]
 	[FriendClass(typeof (RoleInfo))]
+	// [FriendClass(typeof (ServerInfosComponent))]
 	public static class DlgRoleSystem
 	{
 
@@ -18,7 +19,7 @@ namespace ET
 			self.View.Ebtn_createRoleButton.AddListenerAsync(() => { return self.OnCreateRoleClickHandler(); });
 			self.View.Ebtn_deleteRoleButton.AddListenerAsync(() => { return self.OnDeleteRoleClickHandler(); });
 			self.View.Ebtn_startGameButton.AddListenerAsync(() => { return self.OnStartGameClickHandler(); });
-			self.View.ELoop_ServerLoopHorizontalScrollRect.AddItemRefreshListener((Transform trans, int index) =>
+			self.View.ELoop_RoleLoopHorizontalScrollRect.AddItemRefreshListener((Transform trans, int index) =>
 			{
 				self.OnScrollItemRefreshHandler(trans, index);
 			});
@@ -33,7 +34,7 @@ namespace ET
 		{
 			int count = self.ZoneScene().GetComponent<RoleInfosComponent>().RoleInfos.Count;
 			self.AddUIScrollItems(ref self.Scroll_Item_Role_Dict, count);
-			self.View.ELoop_ServerLoopHorizontalScrollRect.SetVisible(true, count);
+			self.View.ELoop_RoleLoopHorizontalScrollRect.SetVisible(true, count);
 		}
 
 		public static void HideWindow(this DlgRole self, Entity contextData = null)
@@ -43,21 +44,21 @@ namespace ET
 
 		public static void OnScrollItemRefreshHandler(this DlgRole self, Transform trans, int index)
 		{
-			var serverItem = self.Scroll_Item_Role_Dict[index].BindTrans(trans);
+			var roleItem = self.Scroll_Item_Role_Dict[index].BindTrans(trans);
 			RoleInfo info = self.ZoneScene().GetComponent<RoleInfosComponent>().RoleInfos[index];
-			serverItem.Ebtn_chooseImage.color =
+			roleItem.Ebtn_chooseImage.color =
 					info.Id == self.ZoneScene().GetComponent<RoleInfosComponent>().CurrentRoleId? Color.red : Color.cyan;
-			serverItem.Elb_roleNameText.SetText(info.Name);
-			serverItem.Ebtn_chooseButton.AddListener(() => { self.onSelectServerItemHandler(info.Id); });
+			roleItem.Elb_roleNameText.SetText(info.Name);
+			roleItem.Ebtn_chooseButton.AddListener(() => { self.onSelectRoleItemHandler(info.Id); });
 
 		}
 
-		public static void onSelectServerItemHandler(this DlgRole self, long serverId)
+		public static void onSelectRoleItemHandler(this DlgRole self, long roleId)
 		{
-			self.ZoneScene().GetComponent<ServerInfosComponent>().CurrentServerId = int.Parse(serverId.ToString());
-			Log.Debug($"当前所选的服务器ID是: {serverId}");
+			self.ZoneScene().GetComponent<RoleInfosComponent>().CurrentRoleId = roleId;
+			Log.Debug($"当前所选的角色ID是: {roleId}");
 			// 主动刷新 循环列表项
-			self.View.ELoop_ServerLoopHorizontalScrollRect.RefillCells();
+			self.View.ELoop_RoleLoopHorizontalScrollRect.RefillCells();
 		}
 
 		public static async ETTask OnCreateRoleClickHandler(this DlgRole self)
@@ -85,12 +86,13 @@ namespace ET
 				Log.Error(e.ToString());
 				return;
 			}
+
 			await ETTask.CompletedTask;
 		}
 
 		public static async ETTask OnDeleteRoleClickHandler(this DlgRole self)
 		{
-			if (self.ZoneScene().GetComponent<RoleInfosComponent>().CurrentRoleId==0)
+			if (self.ZoneScene().GetComponent<RoleInfosComponent>().CurrentRoleId == 0)
 			{
 				Log.Debug("请先选择要删除的角色!");
 				return;
@@ -112,6 +114,7 @@ namespace ET
 				Log.Error(e.ToString());
 				return;
 			}
+
 			await ETTask.CompletedTask;
 		}
 
@@ -119,6 +122,7 @@ namespace ET
 		{
 			self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Lobby);
 			self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Role);
+			await ETTask.CompletedTask;
 		}
 	}
 }

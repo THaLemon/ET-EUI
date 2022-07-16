@@ -160,7 +160,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Image ELoop_ServerImage
+		public UnityEngine.UI.Image ELoop_RoleImage
      	{
      		get
      		{
@@ -169,15 +169,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_ELoop_ServerImage == null )
+     			if( this.m_ELoop_RoleImage == null )
      			{
-		    		this.m_ELoop_ServerImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"ELoop_Server");
+		    		this.m_ELoop_RoleImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"ELoop_Role");
      			}
-     			return this.m_ELoop_ServerImage;
+     			return this.m_ELoop_RoleImage;
      		}
      	}
 
-		public UnityEngine.UI.LoopHorizontalScrollRect ELoop_ServerLoopHorizontalScrollRect
+		public UnityEngine.UI.LoopHorizontalScrollRect ELoop_RoleLoopHorizontalScrollRect
      	{
      		get
      		{
@@ -186,11 +186,11 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_ELoop_ServerLoopHorizontalScrollRect == null )
+     			if( this.m_ELoop_RoleLoopHorizontalScrollRect == null )
      			{
-		    		this.m_ELoop_ServerLoopHorizontalScrollRect = UIFindHelper.FindDeepChild<UnityEngine.UI.LoopHorizontalScrollRect>(this.uiTransform.gameObject,"ELoop_Server");
+		    		this.m_ELoop_RoleLoopHorizontalScrollRect = UIFindHelper.FindDeepChild<UnityEngine.UI.LoopHorizontalScrollRect>(this.uiTransform.gameObject,"ELoop_Role");
      			}
-     			return this.m_ELoop_ServerLoopHorizontalScrollRect;
+     			return this.m_ELoop_RoleLoopHorizontalScrollRect;
      		}
      	}
 
@@ -205,8 +205,8 @@ namespace ET
 			this.m_Ebtn_startGameImage = null;
 			this.m_EInput_roleNameInputField = null;
 			this.m_EInput_roleNameImage = null;
-			this.m_ELoop_ServerImage = null;
-			this.m_ELoop_ServerLoopHorizontalScrollRect = null;
+			this.m_ELoop_RoleImage = null;
+			this.m_ELoop_RoleLoopHorizontalScrollRect = null;
 			this.uiTransform = null;
 		}
 
@@ -219,8 +219,8 @@ namespace ET
 		private UnityEngine.UI.Image m_Ebtn_startGameImage = null;
 		private UnityEngine.UI.InputField m_EInput_roleNameInputField = null;
 		private UnityEngine.UI.Image m_EInput_roleNameImage = null;
-		private UnityEngine.UI.Image m_ELoop_ServerImage = null;
-		private UnityEngine.UI.LoopHorizontalScrollRect m_ELoop_ServerLoopHorizontalScrollRect = null;
+		private UnityEngine.UI.Image m_ELoop_RoleImage = null;
+		private UnityEngine.UI.LoopHorizontalScrollRect m_ELoop_RoleLoopHorizontalScrollRect = null;
 		public Transform uiTransform = null;
 	}
 }

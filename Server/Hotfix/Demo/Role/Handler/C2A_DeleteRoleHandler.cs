@@ -2,6 +2,8 @@
 
 namespace ET
 {
+    [FriendClass(typeof(RoleInfo))]
+    [MessageHandler]
     public class C2A_DeleteRoleHandler: AMRpcHandler<C2A_DeleteRole, A2C_DeleteRole>
     {
         protected override async ETTask Run(Session session, C2A_DeleteRole request, A2C_DeleteRole response, Action reply)
@@ -41,7 +43,7 @@ namespace ET
                 {
                     var roleInfos = await DBManagerComponent.Instance.GetZoneDB(request.ServerId).Query<RoleInfo>(
                         d => d.AccountId == request.AccountId && d.ServerId == request.ServerId);
-                    if (roleInfos != null && roleInfos.Count >= 0)
+                    if (roleInfos == null || roleInfos.Count <= 0)
                     {
                         response.Error = ErrorCode.ERR_RoleIsNotExits;
                         reply();
