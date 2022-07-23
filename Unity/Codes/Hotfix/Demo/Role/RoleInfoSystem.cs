@@ -1,10 +1,7 @@
-﻿namespace ET
-{
-    [FriendClass(typeof (RoleInfo))]
-    public static class RoleInfoSystem
-    {
-        public static void FromMessage(this RoleInfo self, RoleInfoProto roleInfo)
-        {
+﻿namespace ET {
+    [FriendClass(typeof(RoleInfo))]
+    public static class RoleInfoSystem {
+        public static void FromMessage(this RoleInfo self, RoleInfoProto roleInfo) {
             self.Id = roleInfo.Id;
             self.Name = roleInfo.Name;
             self.ServerId = roleInfo.ServerId;
@@ -14,11 +11,9 @@
             self.CreatedTime = roleInfo.CreatedTime;
         }
 
-        public static RoleInfoProto ToMessage(this RoleInfo self)
-        {
-            return new RoleInfoProto()
-            {
-                Id = (int)self.Id,
+        public static RoleInfoProto ToMessage(this RoleInfo self) {
+            return new RoleInfoProto() {
+                Id = self.Id,
                 Name = self.Name,
                 ServerId = self.ServerId,
                 State = self.State,

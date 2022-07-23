@@ -11,10 +11,12 @@ namespace ET
         public const int Resources = 6;
         public const int ResourcesLoader = 7;
         
-        public const int LoginAccount = 8;              // 登录注册流程的线程锁
-        public const int LoginCenterLock = 9;              // 登录中心的线程锁
-        public const int GateLoginLock = 10;              // 网关与登录中心的线程锁
-        public const int CreateRoleLock = 11;              // 在数据库中查询角色
+        public const int LoginAccount = 8;                  // 登录流程-账户验证部分的锁
+        public const int LoginCenterLock = 9;               // 登录流程-登录中心部分的锁
+        public const int GateLoginLock = 10;                // 网关与登录中心的线程锁
+        public const int CreateRoleLock = 11;               // 在数据库中查询角色
+        public const int LoginRealm = 12;                   // 登录流程-realm链接部分的锁
+        public const int LoginGate = 13;                    // 登录流程-gate链接部分的锁
 
         public const int Max = 100; // 这个必须最大
     }

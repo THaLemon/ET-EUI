@@ -2,7 +2,7 @@
 
 namespace ET
 {
-    [FriendClass(typeof(RoleInfo))]
+    [FriendClass(typeof (RoleInfo))]
     [MessageHandler]
     public class C2A_DeleteRoleHandler: AMRpcHandler<C2A_DeleteRole, A2C_DeleteRole>
     {
@@ -37,28 +37,26 @@ namespace ET
 
             // 上锁,防止重复处理
             using (session.AddComponent<SessionLockingComponent>())
+            // 在数据库中操作角色
+            using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.CreateRoleLock, request.AccountId.GetHashCode()))
             {
-                // 在数据库中操作角色
-                using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.CreateRoleLock, request.AccountId.GetHashCode()))
+                var roleInfos = await DBManagerComponent.Instance.GetZoneDB(request.ServerId).Query<RoleInfo>(
+                    d => d.AccountId == request.AccountId && d.ServerId == request.ServerId);
+                if (roleInfos == null || roleInfos.Count <= 0)
                 {
-                    var roleInfos = await DBManagerComponent.Instance.GetZoneDB(request.ServerId).Query<RoleInfo>(
-                        d => d.AccountId == request.AccountId && d.ServerId == request.ServerId);
-                    if (roleInfos == null || roleInfos.Count <= 0)
-                    {
-                        response.Error = ErrorCode.ERR_RoleIsNotExits;
-                        reply();
-                        return;
-                    }
-
-                    var roleInfo = roleInfos[0];
-                    // Todo:为什么要添加为子对象
-                    session.AddChild(roleInfo);
-                    roleInfo.State = (int)RoleState.Freeze;
-                    await DBManagerComponent.Instance.GetZoneDB(request.ServerId).Save(roleInfo);
-                    response.DeletedRoleInfoId = roleInfo.Id;
-                    roleInfo?.Dispose();
+                    response.Error = ErrorCode.ERR_RoleIsNotExits;
                     reply();
+                    return;
                 }
+
+                var roleInfo = roleInfos[0];
+                // Todo:为什么要添加为子对象
+                session.AddChild(roleInfo);
+                roleInfo.State = (int)RoleState.Freeze;
+                await DBManagerComponent.Instance.GetZoneDB(request.ServerId).Save(roleInfo);
+                response.DeletedRoleInfoId = roleInfo.Id;
+                roleInfo?.Dispose();
+                reply();
             }
         }
     }

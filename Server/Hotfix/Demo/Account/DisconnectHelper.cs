@@ -9,13 +9,50 @@
             {
                 return;
             }
+
             var instanceId = self.InstanceId;
             await TimerComponent.Instance.WaitAsync(1000);
             if (!instanceId.Equals(self.InstanceId)) // 验证session在此期间没有被修改或释放
             {
                 return;
             }
+
             self.Dispose();
+        }
+
+        public static async ETTask KickPlayer(Player player)
+        {
+            if (player == null || player.IsDisposed)
+            {
+                return;
+            }
+
+            var instanceId = player.InstanceId;
+            using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.LoginGate, player.Account.GetHashCode()))
+            {
+                if (player.IsDisposed || instanceId != player.InstanceId)
+                {
+                    return;
+                }
+
+                switch (player.PlayerState)
+                {
+                    case PlayerState.Disconnect:
+                        break;
+                    case PlayerState.Gate:
+                        break;
+                    case PlayerState.Game:
+                        // Todo:通知游戏逻辑服务下线Unit角色逻辑,并将数据存进数据库
+
+                        break;
+                }
+
+                player.PlayerState = PlayerState.Disconnect;
+                player.DomainScene().GetComponent<PlayerComponent>()?.Remove(player.Account);
+                player?.Dispose();
+                // 等待player身上所有组件释放(可能有需要异步释放的操作)
+                await TimerComponent.Instance.WaitAsync(300);
+            }
         }
     }
 }

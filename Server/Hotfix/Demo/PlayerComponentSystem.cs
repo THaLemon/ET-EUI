@@ -2,10 +2,10 @@
 
 namespace ET
 {
-    [FriendClass(typeof(PlayerComponent))]
+    [FriendClass(typeof (PlayerComponent))]
     public static class PlayerComponentSystem
     {
-        public class AwakeSystem : AwakeSystem<PlayerComponent>
+        public class AwakeSystem: AwakeSystem<PlayerComponent>
         {
             public override void Awake(PlayerComponent self)
             {
@@ -19,19 +19,19 @@ namespace ET
             {
             }
         }
-        
+
         public static void Add(this PlayerComponent self, Player player)
         {
-            self.idPlayers.Add(player.Id, player);
+            self.idPlayers.Add(player.Account, player);
         }
 
-        public static Player Get(this PlayerComponent self,long id)
+        public static Player Get(this PlayerComponent self, long id)
         {
             self.idPlayers.TryGetValue(id, out Player gamer);
             return gamer;
         }
 
-        public static void Remove(this PlayerComponent self,long id)
+        public static void Remove(this PlayerComponent self, long id)
         {
             self.idPlayers.Remove(id);
         }

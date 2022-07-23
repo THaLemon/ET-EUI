@@ -2,7 +2,7 @@
 
 namespace ET
 {
-    [FriendClass(typeof(RoleInfo))]
+    [FriendClass(typeof (RoleInfo))]
     [MessageHandler]
     public class C2A_GetRolesHandler: AMRpcHandler<C2A_GetRoles, A2C_GetRoles>
     {
@@ -37,30 +37,27 @@ namespace ET
 
             // 上锁,防止重复处理
             using (session.AddComponent<SessionLockingComponent>())
+            // 在数据库中操作角色
+            using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.CreateRoleLock, request.AccountId.GetHashCode()))
             {
-                // 在数据库中操作角色
-                using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.CreateRoleLock, request.AccountId.GetHashCode()))
+                var roleInfos = await DBManagerComponent.Instance.GetZoneDB(session.DomainZone()).Query<RoleInfo>(d =>
+                        d.AccountId == request.AccountId &&
+                        d.ServerId == request.ServerId &&
+                        d.State == (int)RoleState.Normal);
+                if (roleInfos == null || roleInfos.Count <= 0)
                 {
-                    var roleInfos = await DBManagerComponent.Instance.GetZoneDB(session.DomainZone()).Query<RoleInfo>(d =>
-                            d.AccountId == request.AccountId &&
-                            d.ServerId == request.ServerId &&
-                            d.State == (int)RoleState.Normal);
-                    if (roleInfos == null || roleInfos.Count <= 0)
-                    {
-                        // response.Error = ErrorCode.ERR_RoleNameIsRepeatedError;
-                        reply();
-                        return;
-                    }
-
-                    foreach (var roleInfo in roleInfos)
-                    {
-                        response.RoleInfo.Add(roleInfo.ToMessage());
-                        roleInfo?.Dispose();
-                    }
-
-                    roleInfos.Clear();
                     reply();
+                    return;
                 }
+
+                foreach (var roleInfo in roleInfos)
+                {
+                    response.RoleInfo.Add(roleInfo.ToMessage());
+                    roleInfo?.Dispose();
+                }
+
+                roleInfos.Clear();
+                reply();
             }
         }
     }

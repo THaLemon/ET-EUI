@@ -22,8 +22,16 @@ namespace ET
         public const int ERR_RequestRepeatly  = 200008;             //重复请求
         
         public const int ERR_TokenError  = 200009;                  //令牌错误
-        public const int ERR_RoleNameIsEmpty  = 200010;        //角色名字错误
-        public const int ERR_RoleNameIsRepeated  = 200011;     //角色名字重复
-        public const int ERR_RoleIsNotExits  = 200012;         //角色不存在
+        public const int ERR_RoleNameIsEmpty  = 200010;             //角色名字错误
+        public const int ERR_RoleNameIsRepeated  = 200011;          //角色名字重复
+        public const int ERR_RoleIsNotExits  = 200012;              //角色不存在
+        
+        public const int ERR_TokenERR  = 200013;                    //token验证失败
+        public const int ERR_RequestSceneTypeErr  = 200014;         //请求的scene实体类型错误
+        public const int ERR_ConnectGateKeyErr  = 200015;           //请求连接gate时key验证失败
+        
+        
+        public const int ERR_OtherAccountLogin  = 200016;           //有其他玩家登录账户,被顶下线
+        
     }
 }

@@ -1,6 +1,7 @@
 
 
 using System.Net;
+using OfficeOpenXml.FormulaParsing.LexicalAnalysis;
 
 namespace ET {
     public static class SceneFactory {
@@ -18,6 +19,7 @@ namespace ET {
             switch (scene.SceneType) {
                 case SceneType.Realm:
                     scene.AddComponent<NetKcpComponent, IPEndPoint, int>(startSceneConfig.OuterIPPort, SessionStreamDispatcherType.SessionStreamDispatcherServerOuter);
+                    scene.AddComponent<TokenComponent>();
                     break;
                 case SceneType.Gate:
                     scene.AddComponent<NetKcpComponent, IPEndPoint, int>(startSceneConfig.OuterIPPort, SessionStreamDispatcherType.SessionStreamDispatcherServerOuter);

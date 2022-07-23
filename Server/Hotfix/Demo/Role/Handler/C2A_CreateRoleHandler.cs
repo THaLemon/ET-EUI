@@ -46,35 +46,33 @@ namespace ET
 
             // 上锁,防止重复处理
             using (session.AddComponent<SessionLockingComponent>())
+            // 在数据库中操作角色
+            using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.CreateRoleLock, request.AccountId.GetHashCode()))
             {
-                // 在数据库中操作角色
-                using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.CreateRoleLock, request.AccountId.GetHashCode()))
+                var roleInfos = await DBManagerComponent.Instance.GetZoneDB(request.ServerId).Query<RoleInfo>(
+                    d => ((request.Name.Equals(d.Name) && d.ServerId == request.ServerId)));
+
+                if (roleInfos != null && roleInfos.Count > 0)
                 {
-                    var roleInfos = await DBManagerComponent.Instance.GetZoneDB(request.ServerId).Query<RoleInfo>(
-                        d => ((request.Name.Equals(d.Name) && d.ServerId == request.ServerId)));
-
-                    if (roleInfos != null && roleInfos.Count > 0)
-                    {
-                        response.Error = ErrorCode.ERR_RoleNameIsRepeated;
-                        reply();
-                        return;
-                    }
-
-                    // 创建角色信息
-                    var newRoleInfo = session.AddChildWithId<RoleInfo>(IdGenerater.Instance.GenerateUnitId(request.ServerId));
-                    newRoleInfo.Name = request.Name;
-                    newRoleInfo.State = (int)RoleState.Normal;
-                    newRoleInfo.ServerId = request.ServerId;
-                    newRoleInfo.AccountId = request.AccountId;
-                    newRoleInfo.CreatedTime = TimeHelper.ServerNow();
-                    newRoleInfo.LastLoginTime = 0;
-
-                    await DBManagerComponent.Instance.GetZoneDB(session.DomainZone()).Save<RoleInfo>(newRoleInfo);
-
-                    response.RoleInfo = newRoleInfo.ToMessage();
+                    response.Error = ErrorCode.ERR_RoleNameIsRepeated;
                     reply();
-                    newRoleInfo?.Dispose();
+                    return;
                 }
+
+                // 创建角色信息
+                var newRoleInfo = session.AddChildWithId<RoleInfo>(IdGenerater.Instance.GenerateUnitId(request.ServerId));
+                newRoleInfo.Name = request.Name;
+                newRoleInfo.State = (int)RoleState.Normal;
+                newRoleInfo.ServerId = request.ServerId;
+                newRoleInfo.AccountId = request.AccountId;
+                newRoleInfo.CreatedTime = TimeHelper.ServerNow();
+                newRoleInfo.LastLoginTime = 0;
+
+                await DBManagerComponent.Instance.GetZoneDB(session.DomainZone()).Save<RoleInfo>(newRoleInfo);
+
+                response.RoleInfo = newRoleInfo.ToMessage();
+                reply();
+                newRoleInfo?.Dispose();
             }
         }
     }

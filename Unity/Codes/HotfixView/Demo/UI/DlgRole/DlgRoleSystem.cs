@@ -120,9 +120,33 @@ namespace ET
 
 		public static async ETTask OnStartGameClickHandler(this DlgRole self)
 		{
-			self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Lobby);
-			self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Role);
-			await ETTask.CompletedTask;
+			if (self.ZoneScene().GetComponent<RoleInfosComponent>().CurrentRoleId == 0)
+			{
+				Log.Debug("请先选择要操作的角色!");
+				return;
+			}
+
+			try
+			{
+				int error = await LoginHelper.GetRealmkey(self.ZoneScene()); // 获取网关
+				if (error != ErrorCode.ERR_Success)
+				{
+					Log.Error(error.ToString());
+					return;
+				}
+
+				error = await LoginHelper.EnterGame(self.ZoneScene()); // 正式登录游戏
+				if (error != ErrorCode.ERR_Success)
+				{
+					Log.Error(error.ToString());
+					return;
+				}
+			}
+			catch (Exception e)
+			{
+				Log.Error(e.ToString());
+				return;
+			}
 		}
 	}
 }
